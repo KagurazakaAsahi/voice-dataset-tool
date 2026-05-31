@@ -1,0 +1,35 @@
+# ============================================
+# Voice Dataset Tool — 配置文件
+# ============================================
+
+input:
+  dataset_root: "D:/galgame_voice_data"   # 原始语音数据根目录
+  metadata_file: ""                         # 元数据 CSV 路径（留空则从目录结构推断）
+  audio_extensions: [".wav", ".mp3", ".ogg"]
+
+audio:
+  target_sample_rate: 16000
+  target_channels: 1
+  target_bit_depth: 16
+
+vad:
+  min_duration_sec: 0.5
+  max_duration_sec: 30.0
+  max_silence_ratio: 0.5
+  silence_threshold_db: -40
+
+split:
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  seed: 42                                 # 随机种子，保证可复现
+
+output:
+  root: "./output"
+  language: "JP"                           # GPT-SoVITS 语言标签：JP/ZH/EN
+
+characters: []                             # 角色映射列表
+  # - name: "小鳥"
+  #   alias: ["kotori"]
+  # - name: "主人公"
+  #   alias: ["protagonist"]
